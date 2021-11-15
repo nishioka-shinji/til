@@ -20,7 +20,7 @@ https://pages.awscloud.com/JAPAN-event-OE-Hands-on-for-Beginners-monitoring-2020
   - テンプレを使用してAWSリソースをプロビジョニングできるサービス
   - プロビジョニングされたリソースに対する変更／削除も可能
   - 追加料金なし（リソースのみ発生）
-### ハンズオン
+### ハンズオン、CloudFormation準備
 - 事前にサンプルファイルダウンロード
 - スタックの作成
 - テンプレートの準備完了
@@ -33,3 +33,46 @@ https://pages.awscloud.com/JAPAN-event-OE-Hands-on-for-Beginners-monitoring-2020
 ※東京コケたので、バージニア北部で実行した
 ## 03.Amazon CloudWatchの概要
 モニタリングに関する様々な機能を提供
+### ハンズオン、CloudFormationにwordpressインストール
+- 各サーバーのDNSにアクセス
+- wordpress設定
+## 04.Amazon CloudWatchのハンズオン ①EC2、ALB、RDSのメトリクス確認
+### メトリクス監視がなぜ必要か
+#### よくある問題
+- サーバーが過負荷で応答できない
+- サービスが使えない
+- 良い顧客体験を提供できない
+#### 測定すべき項目
+- リソース監視（例：CPU使用率、メモリ使用率）
+- アプリケーション性能管理（例：アプリケーションの処理時間）
+### CloudWatch Metrics
+CloudqWazrchに発行されたメトリクスを収集し、統計を取得
+### 用語
+#### メトリクス
+- CloudWatchに発行された時系列のデータポイントのセット
+- メトリクス名を持つ
+- データポイントはタイムスタンプと測定単位を保持
+- メトリクスは作成されたリージョニのみ存在
+#### 名前空間
+- CloudWatchメトリクスのコンテナ
+- 異なる名前空間のメトリクスは相互に切り離される
+- AWSサービスではAWS/`<service>`が使用される（例：AWS/EC2）
+#### ディメンション
+- メトリクスを一意に識別する名前/値のペア（例：InstanceId=i-1234545678）
+### ハンズオン CloudWatchメトリクス
+#### EC2
+- インスタンスメトリクス
+- CPUUtilization、NetworkIn、NetwrorkOutなど確認
+- グラフ上部、カスタムから現地タイムゾーンに変更
+#### ApplicationELB
+- AppELB別、TG別メトリクス
+- HealthHostCount、HTTPCode_Taget_4XX_Count、HTTPCode_Taget_2XX_Count
+#### RDS
+- データベース別メトリクス
+- WriteIOPS、ReadIOPS
+- グラフ化したメトリクスから期間を1分に設定
+#### CWAgent（カスタムメトリクス）
+- ImageId,InstanceId,InstanceType,device,fsty.pe,...
+- disk_used_parcent（ディスク使用率）
+- ImageId,InstanceId,InstanceType
+- mem_used_parcent（メモリ使用率）
