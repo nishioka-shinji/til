@@ -76,3 +76,28 @@ CloudqWazrchに発行されたメトリクスを収集し、統計を取得
 - disk_used_parcent（ディスク使用率）
 - ImageId,InstanceId,InstanceType
 - mem_used_parcent（メモリ使用率）
+## 05.Amazon CloudWatchのハンズオン ②EC2のディスク使用率90%以上時のアラート発報
+### アラートが何故必要か
+システムやシステムのコンポーネントの振る舞いに変化が起きた際にビジネスへの影響を無くすため
+### CludWatch Alarms
+- CludWatch Metricsをモニタリングしてアラームを発行可能
+- 条件を指定して、自動アクションを実行が可能
+  - 例えば、CPU利用率が80%を超えた時にアラートメールを通知等
+- アラームの状態はOK,ALAEM,INSUFFICIENT_DATAの３種類
+### ハンズオン CloudWatchアラーム
+- アラーム
+- メトリクスの選択
+- CWAgent
+- ImageId,InstanceId,InstanceType,device,fsty.pe,...
+- disked_used_percent（pathが/）
+- 条件設定
+- 種類静的、しきい値90
+- 次へ
+- アラーム状態
+- 新しいトピック作成
+- トピック名入力、Eメール設定
+- Auto Scalingアクション、EC2アクションで挙動が設定できる（今回はしない）
+- 次へ
+- アラーム名設定
+- 次へ
+- アラームの作成
